@@ -1,0 +1,43 @@
+# === std / third-party imports ===
+from typing import Any, Dict
+
+# === sub function imports ===
+from ._parse_or_expression_package._parse_or_expression_src import _parse_or_expression
+
+# === ADT defines ===
+Token = Dict[str, Any]
+# Token possible fields:
+# {
+#   "type": str,
+#   "value": str,
+#   "line": int,
+#   "column": int
+# }
+
+AST = Dict[str, Any]
+# AST possible fields:
+# {
+#   "type": str,
+#   "children": list,
+#   "value": Any,
+#   "line": int,
+#   "column": int
+# }
+
+ParserState = Dict[str, Any]
+# ParserState possible fields:
+# {
+#   "tokens": list,
+#   "pos": int,
+#   "filename": str,
+#   "error": str
+# }
+
+# === main function ===
+def _parse_expression(parser_state: ParserState) -> AST:
+    """Parse complete expression with operator precedence."""
+    return _parse_or_expression(parser_state)
+
+# === helper functions ===
+
+# === OOP compatibility layer ===
